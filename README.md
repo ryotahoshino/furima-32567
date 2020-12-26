@@ -6,24 +6,24 @@
 | --------------------- | ------- | ----------- |
 | nickname              | string  | null: false |
 | email                 | string  | null: false |
-| password              | string  | null: false |
-| password_confirmation | string  | null: false |
-| name                  | string  | null: false |
-| name(kana)            | string  | null: false |
-| birthday              | integer | null: false |
+| encrypted_password    | string  | null: false |
+| name_last_name        | string  | null: false |
+| name_first_name       | string  | null: false |
+| name_last_name_kana   | string  | null: false |
+| name_first_name_kana  | string  | null: false |
+| birthday              | data    | null: false |
 
 ### Association
 
 * has_many :items
 * has_many :records
-* has_one :addresses
 
 
 ## items table
 
 | Column      | Type       |Option             |
 | ----------- | ---------- | ----------------- |
-| items.name  | string     | null: false       |
+| items_name  | string     | null: false       |
 | instruction | text       | null: false       |
 | details     | text       | null: false       |
 | delivery    | reference  | foreign_key: true |
@@ -40,17 +40,15 @@
 
 | Column           | type       | Option            |
 | ---------------- | ---------- | ----------------- |
-| zip.code         | string     | null: false       |
-| urban            | references | foreign_key: true |
+| zip_code         | string     | null: false       |
+| urban            | string     | null: false       |
 | city             | string     | null: false       |
 | address          | string     | null: false       |
 | building         | string     |                   |
-| telephone.number | integer    | null: false       |
+| telephone_number | string     | null: false       |
 
 ### Association
 
-* has_one : users
-* has_one : items
 * has_one : records
 
 ## records table
@@ -58,11 +56,12 @@
 | Column | Type       | Option            |
 | ------ | ---------- | ----------------- |
 | item   | references | foreign_key :true |
+| user   | references | foreign_key :true |
 
 ### Association
 
-* has_many : users
-* has_one : records
-* has_one : items
+* belongs_to : users
+* belongs_to : records
+* belongs_to : items
 
 
