@@ -1,24 +1,71 @@
-# README
+# DB 設計図
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users table
 
-Things you may want to cover:
+| Column                | Type    | Option                    |
+| --------------------- | ------- | ------------------------- |
+| nickname              | string  | null: false               |
+| email                 | string  | null: false, unique: true |
+| encrypted_password    | string  | null: false               |
+| last_name             | string  | null: false               |
+| first_name            | string  | null: false               |
+| last_name_kana        | string  | null: false               |
+| first_name_kana       | string  | null: false               |
+| birthday              | date    | null: false               |
 
-* Ruby version
+### Association
 
-* System dependencies
+* has_many :items
+* has_many :records
 
-* Configuration
 
-* Database creation
+## items table
 
-* Database initialization
+| Column      | Type       |Option             |
+| ----------- | ---------- | ----------------- |
+| name        | string     | null: false       |
+| detail      | text       | null: false       |
+| price       | integer    | null: false       |
+| user        | references | foreign_key: true |
+| state_id    | integer    | null: false       |
+| burden_id   | integer    | null: false       |
+| origin_id   | integer    | null: false       |
+| day_id      | integer    | null: false       |
+| category_id | integer    | null: false       |
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+* belongs_to : user
+* has_one : record
 
-* Deployment instructions
 
-* ...
+## addresses table
+
+| Column           | type       | Option            |
+| ---------------- | ---------- | ----------------- |
+| zip_code         | string     | null: false       |
+| urban_id         | integer    | null: false       |
+| city             | string     | null: false       |
+| address          | string     | null: false       |
+| building         | string     |                   |
+| telephone_number | string     | null: false       |
+| record           | references | foreign_key: true |
+
+### Association
+
+* belongs_to : record
+
+## records table
+
+| Column | Type       | Option            |
+| ------ | ---------- | ----------------- |
+| item   | references | foreign_key :true |
+| user   | references | foreign_key :true |
+
+### Association
+
+* belongs_to : user
+* belongs_to : item
+* has_one : address
+
+
