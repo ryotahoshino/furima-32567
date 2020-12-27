@@ -30,7 +30,7 @@
 | state_id    | integer    | null: false       |
 | burden_id   | integer    | null: false       |
 | origin_id   | integer    | null: false       |
-| days_id     | integer    | null: false       |
+| day_id      | integer    | null: false       |
 | category_id | integer    | null: false       |
 
 ### Association
@@ -44,6 +44,7 @@
 | Column           | type       | Option            |
 | ---------------- | ---------- | ----------------- |
 | zip_code         | string     | null: false       |
+| urban_id         | integer    | null: false       |
 | city             | string     | null: false       |
 | address          | string     | null: false       |
 | building         | string     |                   |
