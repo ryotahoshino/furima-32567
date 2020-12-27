@@ -2,16 +2,16 @@
 
 ## users table
 
-| Column                | Type    | Option      |
-| --------------------- | ------- | ----------- |
-| nickname              | string  | null: false |
-| email                 | string  | null: false |
-| encrypted_password    | string  | null: false |
-| name_last_name        | string  | null: false |
-| name_first_name       | string  | null: false |
-| name_last_name_kana   | string  | null: false |
-| name_first_name_kana  | string  | null: false |
-| birthday              | data    | null: false |
+| Column                | Type    | Option                    |
+| --------------------- | ------- | ------------------------- |
+| nickname              | string  | null: false               |
+| email                 | string  | null: false, unique: true |
+| encrypted_password    | string  | null: false               |
+| name_last_name        | string  | null: false               |
+| name_first_name       | string  | null: false               |
+| name_last_name_kana   | string  | null: false               |
+| name_first_name_kana  | string  | null: false               |
+| birthday              | data    | null: false               |
 
 ### Association
 
@@ -23,20 +23,19 @@
 
 | Column      | Type       |Option             |
 | ----------- | ---------- | ----------------- |
-| items_name  | string     | null: false       |
-| details     | text       | null: false       |
-| delivery    | reference  | foreign_key: true |
+| name        | string     | null: false       |
+| detail      | text       | null: false       |
 | price       | integer    | null: false       |
 | user        | references | foreign_key: true |
-| state       | integer    | null: false       |
-| burden      | integer    | null: false       |
-| origin      | integer    | null: false       |
-| days        | integer    | null: false       |
-| category    | integer    | null: false       |
+| state_id    | integer    | null: false       |
+| burden_id   | integer    | null: false       |
+| origin_id   | integer    | null: false       |
+| days_id     | integer    | null: false       |
+| category_id | integer    | null: false       |
 
 ### Association
 
-* belongs_to : users
+* belongs_to : user
 * has_one : record
 
 
@@ -54,7 +53,7 @@
 
 ### Association
 
-* has_one : record
+* belongs_to : record
 
 ## records table
 
@@ -66,7 +65,7 @@
 ### Association
 
 * belongs_to : user
-* belongs_to : record
 * belongs_to : item
+* has_one : address
 
 
