@@ -11,7 +11,7 @@
 | name_first_name       | string  | null: false               |
 | name_last_name_kana   | string  | null: false               |
 | name_first_name_kana  | string  | null: false               |
-| birthday              | data    | null: false               |
+| birthday              | date    | null: false               |
 
 ### Association
 
@@ -44,7 +44,6 @@
 | Column           | type       | Option            |
 | ---------------- | ---------- | ----------------- |
 | zip_code         | string     | null: false       |
-| urban_id         | integer    | null: false       |
 | city             | string     | null: false       |
 | address          | string     | null: false       |
 | building         | string     |                   |
