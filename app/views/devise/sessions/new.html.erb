@@ -1,6 +1,6 @@
 <%= render "shared/second-header"%>
 
-<%= form_with class: 'registration-main', local: true do |f| %>
+<%= form_with class: 'registration-main', model:@user, url: user_session_path(current_user), local: true do |f| %>
 <div class='form-wrap'>
   <div class='form-header'>
     <h1 class='form-header-text'>
@@ -13,19 +13,15 @@
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
-      <%= f.label :email, "メースアドレス" %><br />
-      <%= f.email_field :email, autofoucs: true, autocomplete: "email" %>
       <span class="indispensable">必須</span>
     </div>
     <%= f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
   </div>
   <div class="form-group">
     <div class='form-text-wrap'>
-      <%= f.label :password, "パスワード（6文字）" %><br />
-      <%= f.password_field :password, autocomplete: "password" %>
       <span class="indispensable">必須</span>
     </div>
-    <%= f.password_field :password, class:"input-default", id:"password", placeholder:"" %>
+    <%= f.password_field :password, class:"input-default", id:"password", placeholder:"パスワード（6文字）" %>
   </div>
   <div class='login-btn'>
     <%= f.submit "ログイン" ,class:"login-red-btn" %>

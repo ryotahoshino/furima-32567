@@ -16,8 +16,7 @@
 
   <div class="form-group">
     <div class='form-text-wrap'>
-      <%= f.label :nickname, "ニックネーム" %> <em>(40 characters maximum)<em><br />
-      <%= f.text_field :nickname, autofocus: true, maxlength: "40" %>
+    <label class="form-text">ニックネーム</label>
       <span class="indispensable">必須</span>
     </div>
     <%= f.text_area :nickname, class:"input-default", id:"nickname", placeholder:"例) furima太郎", maxlength:"40" %>
@@ -25,8 +24,6 @@
 
   <div class="form-group">
     <div class='form-text-wrap'>
-      <%= f.label :email, "メースアドレス" %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       <span class="indispensable">必須</span>
     </div>
     <%= f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
@@ -34,11 +31,6 @@
 
   <div class="form-group">
     <div class='form-text-wrap'>
-      <%= f.label :password, "パスワード（6文字以上）" %>
-      <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> 6 characters minimum)</em>
-      <% end %>
-      <%= f.password_field :password, autocomplete: "new-password" %>
     </div>
     <%= f.password_field :password, class:"input-default", id:"password", placeholder:"6文字以上の半角英数字" %>
     <p class='info-text'>※英字と数字の両方を含めて設定してください</p>
@@ -46,8 +38,6 @@
 
   <div class="form-group">
     <div class='form-text-wrap'>
-      <%= f.label :password_confirmation, "パスワード（再入力）" %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
     <%= f.password_field :password_confirmation, class:"input-default", id:"password-confirmation", placeholder:"同じパスワードを入力して下さい" %>
   </div>
@@ -88,7 +78,7 @@
     <div class='input-birth-wrap'>
       <%= raw sprintf(
                   f.date_select(
-                    :hoge,
+                    :birthday,
                     class:'select-birth',
                     id:"birth-date",
                     use_month_numbers: true,

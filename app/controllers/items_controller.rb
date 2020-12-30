@@ -1,10 +1,16 @@
 class ItemsController < ApplicationController
+<<<<<<< HEAD
+=======
+
   #before_action :set_item, only: [:edit, :show]
   #before_action :move_to_index, except: [:index, :show]
 
+>>>>>>> 63273a92a2f295c825bde798a9b4fff0a061f1a8
   def index
-    #@items = Items.all
   end
+<<<<<<< HEAD
+end
+=======
 
   #def new
     #@items = Items.new
@@ -41,3 +47,9 @@ class ItemsController < ApplicationController
 #     end
 #   end
 # end
+=======
+  def index
+  end
+end
+
+>>>>>>> 63273a92a2f295c825bde798a9b4fff0a061f1a8
