@@ -10,8 +10,6 @@ class User < ApplicationRecord
   validates :first_name_kana, presence: true
   password_valid = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
   validates_format_of :password, with: password_valid
-  # validates :password, format: { with: /\A(?=.?[a-z])(?=.?\d)[a-z\d]+\z/i }
-  # validates :password, format: { with: /\A[a-zA-Z0-9]+\z/, message: "半角英数字のみ使えます"}
   has_many :items
   has_many :records
 end
