@@ -8,7 +8,12 @@ class Item < ApplicationRecord
   validates :origin_id, presence: true
   validates :day_id, presence: true
   validates :category_id, presence: true
+
   belongs_to :user
   has_one :record
   has_one_attached :image
+
+  def was_attacheda?
+    self.image.attached?
+  end
 end
