@@ -15,6 +15,7 @@ class Item < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :state
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :burden
   belongs_to :origin
