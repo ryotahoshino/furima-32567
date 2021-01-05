@@ -13,6 +13,14 @@ class Item < ApplicationRecord
   has_one :record
   has_one_attached :image
 
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :state
+  belongs_to :category
+  belongs_to :burden
+  belongs_to :origin
+  belongs_to :day
+
+
   def was_attacheda?
     self.image.attached?
   end
