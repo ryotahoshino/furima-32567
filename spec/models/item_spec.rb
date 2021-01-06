@@ -39,21 +39,45 @@ RSpec.describe Item, type: :model do
       end
 
       it "priceが299円以下では登録できない" do
-        @item.price = "280"
+        @item.price = 280
         @item.valid?
         expect(@item.errors.full_messages).to include("Price Out of setting range")
       end
 
       it "priceが10,000,000以上では登録できない" do
-        @item.price = "100,000,000"
+        @item.price = 100000000
         @item.valid?
         expect(@item.errors.full_messages).to include("Price Out of setting range")
       end
 
-      it "active hashのカラムが0以外でないと登録できない" do
-        @item.state_id = "0"
+      it "state_idのカラムが0以外でないと登録できない" do
+        @item.state_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("State must be other than 0")
+      end
+
+      it "burden_idのカラムが0以外でないと登録できない" do
+        @item.burden_id = 0
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Burden must be other than 0")
+      end
+
+      it "category_idのカラムが0以外でないと登録できない" do
+        @item.category_id = 0
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category must be other than 0")
+      end
+
+      it "origin_idのカラムが0以外出ないと登録できない" do
+        @item.origin_id = 0
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Origin must be other than 0")
+      end
+
+      it "day_idのカラムが0以外でないと登録できない" do
+        @item.day_id = 0
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Day must be other than 0")
       end
 
       it "state_idが空だと登録できない" do

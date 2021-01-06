@@ -1,8 +1,10 @@
 class Item < ApplicationRecord
-  validates :name, presence: true
-  validates :detail, presence: true
-  validates :price, presence: true
-  validates :user, presence: true
+with_options presence: true do
+  validates :name
+  validates :detail
+  validates :price
+  validates :user
+end
   validates_inclusion_of :price, in: 300..9_999_999, message: 'Out of setting range'
 with_options presence: true, numericality: { other_than: 0 } do
   validates :state_id
