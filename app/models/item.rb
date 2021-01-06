@@ -1,13 +1,16 @@
 class Item < ApplicationRecord
-  validates :name, presence: true
-  validates :detail, presence: true
-  validates :price, presence: true
-  validates :user, presence: true
-  validates :state_id, presence: true
-  validates :burden_id, presence: true
-  validates :origin_id, presence: true
-  validates :day_id, presence: true
-  validates :category_id, presence: true
+with_options presence: true
+  validates :name
+  validates :detail
+  validates :price
+  validates :user
+
+with_options presence: true, numericality: { other_than: 0 }
+  validates :state_id
+  validates :burden_id
+  validates :origin_id
+  validates :day_id
+  validates :category_id
 
   belongs_to :user
   has_one :record
