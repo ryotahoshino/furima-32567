@@ -29,13 +29,19 @@ RSpec.describe Item, type: :model do
       it "priceが空だと登録できない" do
         @item.price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Out of setting range")
+        expect(@item.errors.full_messages).to include("Price can't be blank")
       end
 
-      it "priceが半角英数字でないと登録できない" do
-        @item.price = "1a2b"
+      it "priceが半角英語だけでは登録できない" do
+        @item.price = "absi"
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Out of setting range")
+        expect(@item.errors.full_messages).to include("Price Half-width number")
+      end
+      
+      it "priceが全角文字では登録できない" do
+        @item.price = "９９９"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price Half-width number")
       end
 
       it "priceが299円以下では登録できない" do
@@ -108,6 +114,12 @@ RSpec.describe Item, type: :model do
         @item.day_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Day can't be blank")
+      end
+
+      it "imageが空だと登録できない" do
+        @item.image = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Image can't be blank")
       end
     end
   end

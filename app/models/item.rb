@@ -4,7 +4,11 @@ with_options presence: true do
   validates :detail
   validates :price
   validates :user
+  validates :image
 end
+
+  validates :price, numericality: { with: /\A[0-9]+\z/, message: 'Half-width number' }
+
   validates_inclusion_of :price, in: 300..9_999_999, message: 'Out of setting range'
 with_options presence: true, numericality: { other_than: 0 } do
   validates :state_id
