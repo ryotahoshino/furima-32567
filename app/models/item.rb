@@ -1,16 +1,16 @@
 class Item < ApplicationRecord
-with_options presence: true
-  validates :name
-  validates :detail
-  validates :price
-  validates :user
-
-with_options presence: true, numericality: { other_than: 0 }
+  validates :name, presence: true
+  validates :detail, presence: true
+  validates :price, presence: true
+  validates :user, presence: true
+  validates_inclusion_of :price, in: 300..9_999_999, message: 'Out of setting range'
+with_options presence: true, numericality: { other_than: 0 } do
   validates :state_id
   validates :burden_id
   validates :origin_id
   validates :day_id
   validates :category_id
+end
 
   belongs_to :user
   has_one :record
@@ -18,7 +18,6 @@ with_options presence: true, numericality: { other_than: 0 }
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :state
-  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :burden
   belongs_to :origin

@@ -8,7 +8,7 @@ RSpec.describe Item, type: :model do
 
   describe 'ユーザーの商品一覧表機能'
     context '商品表示がうまくいく時' do
-      it "nameとdetailとpriceが存在すれば登録できる" do
+      it "全ての項目が存在すれば登録できる" do
         expect(@item).to be_valid
       end
     end
@@ -29,7 +29,31 @@ RSpec.describe Item, type: :model do
       it "priceが空だと登録できない" do
         @item.price = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank")
+        expect(@item.errors.full_messages).to include("Price Out of setting range")
+      end
+
+      it "priceが半角英数字でないと登録できない" do
+        @item.price = "1a2b"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price Out of setting range")
+      end
+
+      it "priceが299円以下では登録できない" do
+        @item.price = "280"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price Out of setting range")
+      end
+
+      it "priceが10,000,000以上では登録できない" do
+        @item.price = "100,000,000"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price Out of setting range")
+      end
+
+      it "active hashのカラムが0以外でないと登録できない" do
+        @item.state_id = "0"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("State must be other than 0")
       end
 
       it "state_idが空だと登録できない" do
