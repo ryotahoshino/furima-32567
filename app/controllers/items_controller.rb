@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @items = Item.all
     @items = Item.includes(:user).order("create_at ASC")
   end
 
@@ -22,13 +21,13 @@ class ItemsController < ApplicationController
   def edit
   end
 
-  def update
-    if curent_user.update(user_params)
-      redirect_to root_path
-    else
-      render :edit
-    end
-  end
+  #def update
+    #if curent_user.update(user_params)
+      #redirect_to root_path
+    #else
+      #render :edit
+    #end
+  #end
   private
 
   def item_params
