@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
-    query = "SELECT * FORM items"
+    @items = Item.includes(:user).order("create_at ASC")
   end
 
   def new
