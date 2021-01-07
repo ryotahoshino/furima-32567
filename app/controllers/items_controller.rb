@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    query = "SELECT * FORM items"
   end
 
   def new
