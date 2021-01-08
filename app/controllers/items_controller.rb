@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
+    @items = Item.includes(:user).order("create_at DESC")
   end
 
   def new
@@ -17,8 +18,8 @@ class ItemsController < ApplicationController
     end
   end
 
-  #def edit
-  #end
+  def edit
+  end
 
   #def update
     #if curent_user.update(user_params)

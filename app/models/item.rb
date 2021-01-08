@@ -29,8 +29,4 @@ end
   belongs_to :origin
   belongs_to :day
 
-
-  def was_attacheda?
-    self.image.attached?
-  end
 end
