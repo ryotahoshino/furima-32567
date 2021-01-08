@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_item, only: [:edit, :show]
+  before_action :set_item, only: [:edit, :show, :update]
 
   def index
     @items = Item.includes(:user).order("created_at DESC")
@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if curent_user.update(user_params)
+    if @item.update(item_params)
       redirect_to root_path
     else
       render :edit
@@ -42,10 +42,6 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :detail, :image, :price, :user, :state_id, :burden_id, :origin_id, :day_id, :category_id).merge(user_id: current_user.id)
-  end
-
-  def user_params
-    params.require(:user).permit(:name, :email)
   end
 
   def set_item
