@@ -22,9 +22,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    else
-      show
-    end
+    redirect_to root_path
   end
 
   def edit
@@ -54,6 +52,8 @@ class ItemsController < ApplicationController
   def return_item
     if current_user.id != @item.user.id
       redirct_to root_path
+    else
+      render :show
     end
   end
 end
