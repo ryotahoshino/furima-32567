@@ -19,10 +19,10 @@ class ItemsController < ApplicationController
     end
   end
 
-  #def destroy
-    #item = Item.find(params[:id])
-    #item.destroy
-  #end
+  def destroy
+    item = Item.find(params[:id])
+    item.destroy
+  end
 
   def edit
     if current_user.id != @item.user.id
