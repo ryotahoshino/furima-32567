@@ -36,6 +36,10 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
+
+    if current_user.id != @item.user.id
+      redirct_to root_path
+    end
   end
 
   def show
