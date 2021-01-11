@@ -1,9 +1,10 @@
 class RecordsController < ApplicationController
   def index
+    @record_address = RecordAddress.new
+    @item = Item.find(params[:item_id])
   end
 
   def new
-    @record_address = RecordAddress.new
   end
 
   def create
@@ -19,6 +20,6 @@ class RecordsController < ApplicationController
   private
 
   def address_params
-    params.require(:record_address).permit(:zip_code, :urban_id, :city, :address, :building, :telephone_number).merge(item_id: item.id, user_id: user.id)
+    params.require(:record_address).permit(:zip_code, :urban_id, :city, :address, :building, :telephone_number).merge(item_id: params[item_id], user_id: user.id)
   end
 end
