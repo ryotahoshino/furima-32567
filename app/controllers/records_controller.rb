@@ -1,4 +1,4 @@
-class AddressesController < ApplicationController
+class RecordsController < ApplicationController
   def index
   end
 
@@ -7,7 +7,7 @@ class AddressesController < ApplicationController
   end
 
   def create
-    @user_address = RecordAddress.new(address_params)
+    @record_address = RecordAddress.new(address_params)
      if @record_address.valid?
       @record_address.save
       redirect_to action: :index
@@ -19,6 +19,6 @@ class AddressesController < ApplicationController
   private
 
   def address_params
-    params.require(:record_address).permit(:nickname, :zip_code, :urban_id, :city, :address, :building, :telephone_number).merge(item_id: item.id, user_id: user.id)
+    params.require(:record_address).permit(:zip_code, :urban_id, :city, :address, :building, :telephone_number).merge(item_id: item.id, user_id: user.id)
   end
 end
