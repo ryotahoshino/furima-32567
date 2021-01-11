@@ -3,7 +3,7 @@ with_options presence: true do
   validates :zip_code
   validates :urban_id
   validates :city
-  validates :addresses
+  validates :address
   validates :building
   validates :telephone_number
 end
