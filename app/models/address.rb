@@ -4,7 +4,6 @@ with_options presence: true do
   validates :urban_id
   validates :city
   validates :address
-  validates :building
   validates :telephone_number
 end
 

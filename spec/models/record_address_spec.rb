@@ -6,7 +6,7 @@ RSpec.describe RecordAddress, type: :model do
       @record_address = FactoryBot.build(:record_address)
     end
 
-  describe 'ユーザーの商品購入機能'
+  describe 'ユーザーの商品購入機能' do
     context '商品購入がうまくいく時' do
       it "建物以外の全ての値が正しく入力されている時" do
         expect(@record_address).to be_valid
@@ -24,14 +24,14 @@ RSpec.describe RecordAddress, type: :model do
         expect(@record_address.errors.full_messages).to include("Zip code can't be blank")
       end
       it "zip_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと" do
-        @redord_address.zip_code = "8528043"
+        @record_address.zip_code = "8528043"
         @record_address.valid?
-        expect(@record_address.errors.full_messages).to include("Zip code is invalid. Include hyphen(-)")
+        expect(@record_address.errors.full_messages).to include("Zip code 郵便番号にはハイフンありの7桁である必要があること")
       end
       it "urban_idが空だと購入できない" do
         @record_address.urban_id = nil
         @record_address.valid?
-        expect(@record_address.errprs.full_messages).to include("Urban_id can't be blank")
+        expect(@record_address.errors.full_messages).to include("Urban can't be blank")
       end
       it "cityが空だと購入できない" do
         @record_address.city = nil
@@ -40,14 +40,15 @@ RSpec.describe RecordAddress, type: :model do
       end
       it "addressが空だと購入できない" do
         @record_address.address = nil
-        @record_address.address.valid?
+        @record_address.valid?
         expect(@record_address.errors.full_messages).to include("Address can't be blank")
       end
       it "telephone_numberが空だと購入できない" do
         @record_address.telephone_number = nil
-        @recore_address.telephone_number.valid?
-        expect(@record_address.errors.full_messages).to include("Telephone_number can't be blank")
+        @record_address.valid?
+        expect(@record_address.errors.full_messages).to include("Telephone number can't be blank")
       end
     end
   end
+end
 end
