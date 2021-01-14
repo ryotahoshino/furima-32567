@@ -1,6 +1,6 @@
 class RecordsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_item, only: [:index, :create, :pay_item]
+  before_action :set_item, only: [:index, :create]
   def index
     if @item.record.present?
       redirect_to root_path

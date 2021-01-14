@@ -48,6 +48,31 @@ RSpec.describe RecordAddress, type: :model do
         @record_address.valid?
         expect(@record_address.errors.full_messages).to include("Telephone number can't be blank")
       end
+      it "user_idが空だと購入できない" do
+        @record_address.user_id = nil
+        @record_address.valid?
+        expect(@record_address.errors.full_messages).to include("User can't be blank")
+      end
+      it "item_idが空だと購入できない" do
+        @record_address.item_id = nil
+        @record_address.valid?
+        expect(@record_address.errors.full_messages).to include("Item can't be blank")
+      end
+      it "tokenが空だと購入できない" do
+        @record_address.token = nil
+        @record_address.valid?
+        expect(@record_address.errors.full_messages).to include("Token can't be blank")
+      end
+      it "urban_idが0の時は購入できない" do
+        @record_address.urban_id = 0
+        @record_address.valid?
+        expect(@record_address.errors.full_messages).to include("Urban must be other than 0")
+      end
+      it "telephone_numberが12桁以上だと購入できない" do
+        @record_address.telephone_number = "08038921092929"
+        @record_address.valid?
+        expect(@record_address.errors.full_messages).to include("Telephone number 電話番号はハイフンなしの11桁いないである必要がある")
+      end
     end
   end
 end
