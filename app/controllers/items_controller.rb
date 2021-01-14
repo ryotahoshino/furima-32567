@@ -53,7 +53,8 @@ class ItemsController < ApplicationController
   end
 
   def return_item
-    if current_user.id != @item.user.id
-      redirct_to root_path
+    if current_user.id != @item.user.id || @item.record.present?
+      redirect_to root_path
+    end
   end
 end
