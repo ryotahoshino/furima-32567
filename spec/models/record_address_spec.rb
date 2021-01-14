@@ -3,7 +3,10 @@ require 'rails_helper'
 RSpec.describe RecordAddress, type: :model do
   describe '#create' do
     before do
-      @record_address = FactoryBot.build(:record_address)
+      user = FactoryBot.create(:user)
+      item = FactoryBot.create(:item)
+      sleep 0.1
+      @record_address = FactoryBot.build(:record_address, user_id: user.id, item_id: item.id)
     end
 
   describe 'ユーザーの商品購入機能' do
