@@ -76,6 +76,11 @@ RSpec.describe RecordAddress, type: :model do
         @record_address.valid?
         expect(@record_address.errors.full_messages).to include("Telephone number 電話番号はハイフンなしの11桁いないである必要がある")
       end
+      it "telephone_numberが英数混合では登録できないこと" do
+        @record_address.telephone_number = "1a1w13sd3ded"
+        @record_address.valid?
+        expect(@record_address.errors.full_messages).to include("Telephone number 電話番号はハイフンなしの11桁いないである必要がある")
+      end
     end
   end
 end
