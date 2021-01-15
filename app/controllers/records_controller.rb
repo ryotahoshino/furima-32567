@@ -2,7 +2,7 @@ class RecordsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_item, only: [:index, :create]
   def index
-    if @item.record.present? && current_user.id == @item.user_id
+    if @item.record.present? || current_user.id == @item.user_id
       redirect_to root_path
     end
 

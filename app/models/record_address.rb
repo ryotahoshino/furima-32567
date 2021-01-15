@@ -14,6 +14,6 @@ class RecordAddress
 
   def save
     record = Record.create(user_id: user_id, item_id: item_id)
-    Address.create!(zip_code: zip_code, urban_id: urban_id, city: city, address: address, building: building, telephone_number: telephone_number, record_id: record.id)
+    Address.create(zip_code: zip_code, urban_id: urban_id, city: city, address: address, building: building, telephone_number: telephone_number, record_id: record.id)
   end
 end
