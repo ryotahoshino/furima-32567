@@ -15,5 +15,7 @@ class RecordAddress
   def save
     record = Record.create(user_id: user_id, item_id: item_id)
     Address.create(zip_code: zip_code, urban_id: urban_id, city: city, address: address, building: building, telephone_number: telephone_number, record_id: record.id)
+    address = Address.where(item_id: item.id).first_or_initialize
+    address.save
   end
 end
