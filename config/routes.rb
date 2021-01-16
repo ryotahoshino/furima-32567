@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :items do
     resources :records, only: [:index, :new, :create]
   end
+  resources :user, only: [:show, :update]
 end
