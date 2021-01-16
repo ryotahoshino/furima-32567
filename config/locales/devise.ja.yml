@@ -2,6 +2,27 @@ ja:
   activerecord:
     attributes:
       user:
+        nickname: ニックネーム
+        last_name: 名字
+        first_name: 名前
+        last_name_kana: 名字（カタカナ）
+        first_name_kana: 名前（カタカナ）
+      item:
+        name: 商品名
+        detail: 商品説明
+        price: 値段
+        state_id: 商品の状態
+        burden_id: 配送料の負担
+        origin_id: 発送元
+        day_id: 発送日
+        category_id: カテゴリー
+      address:
+        zip_code: 郵便番号
+        urban_id: 都道府県
+        city: 市町村区
+        address: 番地
+        building: 建物
+        telephone_number: 電話番号
         confirmation_sent_at: パスワード確認送信時刻
         confirmation_token: パスワード確認用トークン
         confirmed_at: パスワード確認時刻
