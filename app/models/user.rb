@@ -16,4 +16,5 @@ class User < ApplicationRecord
   validates_format_of :password, with: password_valid
   has_many :items
   has_many :records
+  has_one :card, dependent: :destroy
 end
