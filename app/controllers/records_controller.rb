@@ -31,8 +31,13 @@ class RecordsController < ApplicationController
     Payjp::Charge.create(
       amount: @item.price,
       card: address_params[:token],
+      customer: customer_token,
       currency: 'jpy'
     )
+
+    ItemRecord.create(item_id: params[:id])
+
+    redirect_to root_path
   end
 
   def set_item
