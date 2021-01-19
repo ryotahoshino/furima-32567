@@ -2,7 +2,7 @@
 lock "3.15.0"
 
 set :application, "furima-32567"
-set :repo_url, "git@example.com:ryotahoshino/furima-32567.git"
+set :repo_url, "git@github.com:ryotahoshino/furima-32567.git"
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 set :rbenv_type, :user
 set :rbenv_ruby, '2.6.5'
