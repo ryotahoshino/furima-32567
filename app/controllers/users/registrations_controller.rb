@@ -16,8 +16,27 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
     @address = @user.build_address
-    render :new_address
+    render :new_address 
   end
+
+  def create_address
+    @user = User.new(session["devise.regist_data"]["user"])
+    @address = Address.new(address_params)
+      unless @address.valid?
+        render :new_address and return
+      end
+    @user.build_address(@address.attributes)
+    @user.save
+    session["devise.regist_data"]["user"].clear
+    sign_in(:user, @user)
+  end
+
+  private
+
+  def address_params
+    params.require(:record_address).permit(:zip_code, :urban_id, :city, :address, :building, :telephone_number, :item_id, :token).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
+  end
+  
 
   # GET /resource/sign_up
   # def new
